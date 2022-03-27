@@ -1,6 +1,6 @@
 namespace EdtechSolution.Application.DTOs;
 
-public class StudentDTO
+public class AddStudentDTO
 {
     public string Name { get; set; }
     public string Email { get; set; }

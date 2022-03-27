@@ -118,5 +118,3 @@ Abaixo alguns mockoups de interface como um guia para a criação do front-end. 
 - Quais requisitos obrigatórios que não foram entregues
 4. Informe ao recrutador quando concluir o desafio junto com o link do repositório
 5. Após revisão do projeto junto com a equipe de desevolvimento deixe seu repositório privado
-6. teste
-7. 

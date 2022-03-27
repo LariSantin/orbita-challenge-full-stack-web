@@ -1,4 +1,3 @@
-using EdtechSolution;
 using EdtechSolution.Application.Services;
 using EdtechSolution.Domain;
 using EdtechSolution.Domain.Interfaces;

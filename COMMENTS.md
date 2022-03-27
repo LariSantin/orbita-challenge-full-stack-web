@@ -1,5 +1,9 @@
-- Arquitetura utilizada:
+- Arquitetura utilizada: 
+    - Arquitetura em camadas. 
 - Bibliotecas de terceiros:
 - Melhorias:
-    - Criar o Id como Guid (deu erro na hora da migration)
+     - Criar o Id como Guid porque gerou a migration com um tipo que funciona apenas no mysql, para facilitar alterei para string.
+    - Melhoria nas mensagens.
+    - Validações e exceptions.
+    - Melhorar a arquitetura.
 - Requisitos obrigatórios que não foram entregues:

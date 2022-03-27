@@ -1,0 +1,5 @@
+- Arquitetura utilizada:
+- Bibliotecas de terceiros:
+- Melhorias:
+    - Criar o Id como Guid (deu erro na hora da migration)
+- Requisitos obrigatórios que não foram entregues:

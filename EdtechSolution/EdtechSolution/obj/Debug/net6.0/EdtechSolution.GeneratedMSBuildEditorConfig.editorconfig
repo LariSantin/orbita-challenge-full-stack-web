@@ -1,0 +1,16 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = EdtechSolution
+build_property.RootNamespace = EdtechSolution
+build_property.ProjectDir = /home/larissa/Documentos/Desafio full stack/orbita-challenge-full-stack-web/EdtechSolution/EdtechSolution/
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = /home/larissa/Documentos/Desafio full stack/orbita-challenge-full-stack-web/EdtechSolution/EdtechSolution
+build_property._RazorSourceGeneratorDebug = 

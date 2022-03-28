@@ -1,3 +1,4 @@
+using System.Web.Http;
 using EdtechSolution.Application.DTOs;
 using EdtechSolution.Application.ViewModels;
 using EdtechSolution.Domain.Interfaces;
@@ -5,9 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EdtechSolution.Api;
 
+
 [Route("api/students")]
 [ApiController]
-public class StudentsController : ControllerBase
+public class StudentsController : ApiController
 {
     private readonly IStudentService _service;
 

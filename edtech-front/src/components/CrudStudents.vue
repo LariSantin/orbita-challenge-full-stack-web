@@ -22,7 +22,7 @@
         >
           <template v-slot:activator="{ on, attrs }">
             <v-btn
-              color="primary"
+              color="#00008b"
               dark
               class="mb-2"
               v-bind="attrs"
@@ -36,6 +36,7 @@
               <span class="text-h5">{{ formTitle }}</span>
             </v-card-title>
 
+    
             <v-card-text>
               <v-container>
                 <v-row>
@@ -45,8 +46,11 @@
                     md="8"
                   >
                     <v-text-field
-                      v-model="editedItem.name"
+                      v-model="editedStudent.name"
                       label="Nome"
+                      :rules="nameRules"
+                      :counter="40"
+                      required
                     ></v-text-field>
                   </v-col>
 
@@ -56,8 +60,10 @@
                     md="8"
                   >
                     <v-text-field
-                      v-model="editedItem.email"
+                      v-model="editedStudent.email"
                       label="E-mail"
+                      :rules="emailRules"
+                      required
                     ></v-text-field>
                   </v-col>
                   <v-col
@@ -66,8 +72,12 @@
                     md="8"
                   >
                     <v-text-field
-                      v-model="editedItem.academicrecord"
+                      v-model="editedStudent.academicRecord"
                       label="Registro Acadêmico"
+                      type="number"
+                      :disabled="editedStudent.academicRecord != '' && editedStudent.id != ''"
+                      :rules="FieldRules"
+                      required
                     ></v-text-field>
                   </v-col>
                   <v-col
@@ -76,8 +86,12 @@
                     md="8"
                   >
                     <v-text-field
-                      v-model="editedItem.cpf"
+                      v-mask="'###.###.###-##'"                
+                      v-model="editedStudent.cpf"
                       label="CPF"
+                      :disabled="editedStudent.cpf != '' && editedStudent.id != ''"
+                       :rules="FieldRules"
+                      required
                     ></v-text-field>
                   </v-col>
                   <v-col
@@ -112,10 +126,10 @@
         </v-dialog>
         <v-dialog v-model="dialogDelete" max-width="500px">
           <v-card>
-            <v-card-title class="text-h5">Are you sure you want to delete this item?</v-card-title>
+            <v-card-title class="text-h5">Deletar aluno?</v-card-title>
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn color="blue darken-1" text @click="closeDelete">Cancel</v-btn>
+              <v-btn color="blue darken-1" text @click="closeDelete">Cancelar</v-btn>
               <v-btn color="blue darken-1" text @click="deleteItemConfirm">OK</v-btn>
               <v-spacer></v-spacer>
             </v-card-actions>
@@ -138,14 +152,6 @@
         mdi-delete
       </v-icon>
     </template>
-    <template v-slot:no-data>
-      <v-btn
-        color="primary"
-        @click="initialize"
-      >
-        Reset
-      </v-btn>
-    </template>
   </v-data-table>
 </template>
 
@@ -154,9 +160,7 @@ import Student from '../services/students';
 
   export default {
     mounted(){
-      Student.get().then(resposta => {
-        this.students = resposta.data;
-      })
+      this.list()
     },
     data: () => ({
       dialog: false,
@@ -173,21 +177,34 @@ import Student from '../services/students';
         { text: 'Actions', value: 'actions', sortable: false },
       ],
       students: [],
+      errors: [],
       editedIndex: -1,
-      editedItem: {
+      editedStudent: {
          id: '',
         name: '',
         email: '',
-        academicrecord: '',
+        academicRecord: '',
         cpf: '',
       },
       defaultItem: {
         id: '',
         name: '',
         email: '',
-        academicrecord: '',
+        academicRecord: '',
         cpf: '',
       },
+      nameRules: [
+        v => !!v || 'Campo obrigatório',
+        v => v.length <= 40 || 'O Nome deve ter menos que 40 caracteres'
+      ],
+      emailRules: [ 
+        v => !!v || 'Campo obrigatório',
+        v => !v || /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail deve ser valido'
+      ],
+      FieldRules: [
+        v => !!v || 'Campo obrigatório',
+      ]
+
     }),
 
     computed: {
@@ -208,25 +225,33 @@ import Student from '../services/students';
     methods: {
       editItem (item) {
         this.editedIndex = this.students.indexOf(item)
-        this.editedItem = Object.assign({}, item)
+        this.editedStudent = Object.assign({}, item)
         this.dialog = true
       },
 
       deleteItem (item) {
         this.editedIndex = this.students.indexOf(item)
-        this.editedItem = Object.assign({}, item)
+        this.editedStudent = Object.assign({}, item)
         this.dialogDelete = true
       },
 
       deleteItemConfirm () {
-        this.students.splice(this.editedIndex, 1)
-        this.closeDelete()
+        Student.delete(this.editedStudent.id).then(resposta => {
+          this.closeDelete();
+          this.list();
+          console.log(resposta);
+          //this.errors = [];
+        })
+        //.catch(e => {
+            //this.errors = e.response.data.errors;
+       // })
+        
       },
 
       close () {
         this.dialog = false
         this.$nextTick(() => {
-          this.editedItem = Object.assign({}, this.defaultItem)
+          this.editedStudent = Object.assign({}, this.defaultItem)
           this.editedIndex = -1
         })
       },
@@ -234,22 +259,45 @@ import Student from '../services/students';
       closeDelete () {
         this.dialogDelete = false
         this.$nextTick(() => {
-          this.editedItem = Object.assign({}, this.defaultItem)
+          this.editedStudent = Object.assign({}, this.defaultItem)
           this.editedIndex = -1
         })
       },
 
       save () {
         if (this.editedIndex > -1) {
-          Object.assign(this.students[this.editedIndex], this.editedItem)
+             Student.update(this.editedStudent).then(r => {
+            this.errors = [];
+            alert('Atualizado com sucesso');
+            this.list()
+            console.log(r);
+
+          }).catch(e => {
+             alert("Não foi possível atualizar os dados.Confira!")
+            console.log(e);
+            this.errors = e;
+          });
         } else {
-          Student.add(this.editedItem).then(resposta => {
-            alert('salvo com sucesso');
-            alert(resposta);
+
+          Student.add(this.editedStudent).then(r => {
+            this.errors = [];
+            alert("Salvo com sucesso");
+            this.list()
+            console.log(r);
+
+          }).catch(e => {
+            alert("Não foi possível salvar os dados.Confira!")
+            console.log(e);
+            this.errors = e;
           })
-          //this.students.push(this.editedItem)
         }
         this.close()
+      },
+
+      list(){
+        Student.get().then(resposta => {
+          this.students = resposta.data;
+        })
       },
     },
   }

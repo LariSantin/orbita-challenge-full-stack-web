@@ -6,10 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EdtechSolution.Api;
 
-
 [Route("api/students")]
 [ApiController]
-public class StudentsController : ApiController
+public class StudentsController : ControllerBase
 {
     private readonly IStudentService _service;
 
@@ -34,7 +33,7 @@ public class StudentsController : ApiController
     {
         var result = _service.GetById(id);
         if (result == null)
-            return BadRequest("Student not found.");
+            return NotFound("Student not found.");
         
         return Ok(result);
     }   

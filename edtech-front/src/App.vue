@@ -2,7 +2,7 @@
   <v-app>
   <v-row class="row-class">
       <v-app-bar
-        color="#6959CD"
+        color="#00008B"
         dark
         width="20%"
       >
@@ -15,7 +15,7 @@
       </v-app-bar>
 
       <v-app-bar
-          color="#00008B"
+          color="#75759d"
           dark
           width="80%"
         >

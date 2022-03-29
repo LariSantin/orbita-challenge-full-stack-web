@@ -166,3 +166,10 @@
 /home/larissa/Documentos/Desafio full stack/orbita-challenge-full-stack-web/EdtechSolution/EdtechSolution/obj/Debug/net6.0/EdtechSolution.pdb
 /home/larissa/Documentos/Desafio full stack/orbita-challenge-full-stack-web/EdtechSolution/EdtechSolution/obj/Debug/net6.0/EdtechSolution.genruntimeconfig.cache
 /home/larissa/Documentos/Desafio full stack/orbita-challenge-full-stack-web/EdtechSolution/EdtechSolution/obj/Debug/net6.0/ref/EdtechSolution.dll
+/home/larissa/Documentos/Desafio full stack/orbita-challenge-full-stack-web/EdtechSolution/EdtechSolution/bin/Debug/net6.0/System.Net.Http.Formatting.dll
+/home/larissa/Documentos/Desafio full stack/orbita-challenge-full-stack-web/EdtechSolution/EdtechSolution/bin/Debug/net6.0/Microsoft.AspNetCore.JsonPatch.dll
+/home/larissa/Documentos/Desafio full stack/orbita-challenge-full-stack-web/EdtechSolution/EdtechSolution/bin/Debug/net6.0/Microsoft.AspNetCore.Mvc.WebApiCompatShim.dll
+/home/larissa/Documentos/Desafio full stack/orbita-challenge-full-stack-web/EdtechSolution/EdtechSolution/bin/Debug/net6.0/Microsoft.DotNet.PlatformAbstractions.dll
+/home/larissa/Documentos/Desafio full stack/orbita-challenge-full-stack-web/EdtechSolution/EdtechSolution/bin/Debug/net6.0/Microsoft.Extensions.DependencyModel.dll
+/home/larissa/Documentos/Desafio full stack/orbita-challenge-full-stack-web/EdtechSolution/EdtechSolution/bin/Debug/net6.0/Newtonsoft.Json.dll
+/home/larissa/Documentos/Desafio full stack/orbita-challenge-full-stack-web/EdtechSolution/EdtechSolution/bin/Debug/net6.0/Newtonsoft.Json.Bson.dll

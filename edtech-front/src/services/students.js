@@ -1,15 +1,18 @@
-import { server } from './config';
+import { api } from './config';
 
 export default {
     
     get: () => {
-        return server.get('students')
-    },
-    getById: () => {
-        return server.get()
+        return api.get('students')
     },
     add: (student) => {
-        return server.post('students', student)
+        return api.post('students', student)
+    },
+    update: (student) => {
+        return api.put(`students/${student.id}`, student)
+    },
+    delete : (id) => {
+        return api.delete(`students/${id}`)
     }
 
 

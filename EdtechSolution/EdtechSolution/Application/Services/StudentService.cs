@@ -37,6 +37,10 @@ public class StudentService : IStudentService
             throw new Exception("Academic Record already exists");
         }
 
+        if(studentDto.Name == "" || studentDto.Email == "" 
+                                 || studentDto.AcademicRecord == "" || studentDto.CPF == "")
+            throw new Exception("Fields are mandatory");
+        
         return true;
     }
 

@@ -7,8 +7,9 @@
     - Back:
         - Criar o Id como Guid porque gerou a migration com um tipo que funciona apenas no mysql, para facilitar alterei para string.
         - Melhoria nas mensagens.
-        - Validações e exceptions.
+        - Validações e tratamento de exceções.
         - Melhorar a arquitetura.
     - Front:
-        - Melhorar o design
+        - Melhorar o design.
+        - Tratamento de exceções.
 - Requisitos obrigatórios que não foram entregues:

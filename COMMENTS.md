@@ -1,6 +1,6 @@
 - Arquitetura utilizada: 
     - Arquitetura em camada: separando as responsabilidades nas camadas de persistência, negócios e apresentação.
-    - 
+    
 - Bibliotecas de terceiros:
     - axios - conexão com api.	
     
@@ -14,4 +14,6 @@
     - Front:
         - Melhorar o design (menu, tela de cadastro e edição).
         - Tratamento de exceções.
+        - Organização da arquitetura
+        
 - Requisitos obrigatórios que não foram entregues:

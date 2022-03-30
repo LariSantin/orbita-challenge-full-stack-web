@@ -240,12 +240,8 @@ import Student from '../services/students';
           this.closeDelete();
           this.list();
           console.log(resposta);
-          //this.errors = [];
         })
-        //.catch(e => {
-            //this.errors = e.response.data.errors;
-       // })
-        
+          
       },
 
       close () {
